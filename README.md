@@ -24,7 +24,7 @@ Create `.env.local` in this folder:
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key 
 ```
 
 Run:
