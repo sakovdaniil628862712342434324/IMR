@@ -1,0 +1,289 @@
+/*
+Author: Deema Lashtabeha
+Inputs are class names from the React tree (page, nav, main, card, form, movies table, footer).
+Processing sets a dark navy page, gold accents, and a readable layout for the catalogue, auth cards, and static chrome.
+Outputs the only stylesheet for IMR. No Tailwind. Navbar and footer stay full width; the main column is 960px (420px on auth pages).
+Mobile: table scrolls sideways; nav links wrap. Tokens are the hex values at the top of this file.
+*/
+
+:root {
+	--bg: #12141c;
+	--panel: #1b1e2a;
+	--line: #2c3144;
+	--text: #eef0f6;
+	--muted: #9aa3b8;
+	--gold: #d4a017;
+	--danger: #e05656;
+}
+
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+	margin: 0;
+	min-height: 100%;
+}
+body {
+	font-family: Georgia, "Times New Roman", serif;
+	background: var(--bg);
+	color: var(--text);
+}
+a {
+	color: var(--gold);
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+.page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+.main {
+	flex: 1;
+	width: min(960px, calc(100% - 32px));
+	margin: 0 auto;
+	padding: 32px 0 48px;
+}
+.main.narrow {
+	width: min(420px, calc(100% - 32px));
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+	padding: 16px 24px;
+	border-bottom: 1px solid var(--line);
+	background: #0e1016;
+}
+.nav-brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--text);
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+.nav-brand:hover {
+	text-decoration: none;
+}
+.nav-mark {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 4px;
+	background: var(--gold);
+	color: #12141c;
+	font-size: 13px;
+	font-family: system-ui, sans-serif;
+}
+.nav-links {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	font-family: system-ui, sans-serif;
+	font-size: 14px;
+}
+.nav-cta {
+	padding: 8px 12px;
+	border: 1px solid var(--gold);
+	border-radius: 4px;
+}
+.nav-user {
+	color: var(--muted);
+}
+.nav-user em {
+	font-style: normal;
+	margin-left: 8px;
+	color: var(--gold);
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.foot {
+	margin-top: auto;
+	border-top: 1px solid var(--line);
+	background: #0e1016;
+	padding: 28px 24px 16px;
+	font-family: system-ui, sans-serif;
+	font-size: 14px;
+	color: var(--muted);
+}
+.foot-grid {
+	display: grid;
+	gap: 20px;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	max-width: 960px;
+	margin: 0 auto;
+}
+.foot strong {
+	display: block;
+	color: var(--text);
+	margin-bottom: 8px;
+}
+.foot p {
+	margin: 0 0 6px;
+}
+.foot-copy {
+	max-width: 960px;
+	margin: 20px auto 0;
+	padding-top: 12px;
+	border-top: 1px solid var(--line);
+	font-size: 12px;
+}
+
+h1 {
+	font-size: 32px;
+	margin: 0 0 20px;
+	font-weight: 700;
+}
+h2 {
+	font-size: 18px;
+	margin: 0 0 12px;
+}
+
+.card {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 20px;
+}
+.card.note {
+	margin-bottom: 20px;
+	line-height: 1.5;
+}
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-bottom: 24px;
+}
+.form label {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-family: system-ui, sans-serif;
+	font-size: 13px;
+	color: var(--muted);
+}
+.form input {
+	font: inherit;
+	color: var(--text);
+	background: #12141c;
+	border: 1px solid var(--line);
+	border-radius: 4px;
+	padding: 10px 12px;
+}
+.form input:focus {
+	outline: 2px solid var(--gold);
+	border-color: transparent;
+}
+.form-row {
+	display: flex;
+	gap: 8px;
+}
+
+.btn {
+	font-family: system-ui, sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	background: var(--gold);
+	color: #12141c;
+	border: 0;
+	border-radius: 4px;
+	padding: 10px 16px;
+	cursor: pointer;
+}
+.btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+.btn.ghost {
+	background: transparent;
+	color: var(--text);
+	border: 1px solid var(--line);
+}
+.linkish {
+	background: none;
+	border: 0;
+	padding: 0;
+	color: var(--gold);
+	cursor: pointer;
+	font: inherit;
+	font-family: system-ui, sans-serif;
+	font-size: 14px;
+}
+.linkish:hover {
+	text-decoration: underline;
+}
+.linkish.danger {
+	color: var(--danger);
+}
+
+.err {
+	color: var(--danger);
+	font-family: system-ui, sans-serif;
+	font-size: 13px;
+	margin: 0;
+}
+.banner {
+	background: #3a1c1c;
+	color: #ffd0d0;
+	padding: 10px 12px;
+	border-radius: 4px;
+	font-family: system-ui, sans-serif;
+	font-size: 14px;
+}
+.muted {
+	color: var(--muted);
+	font-family: system-ui, sans-serif;
+	font-size: 14px;
+}
+.empty {
+	color: var(--muted);
+	font-family: system-ui, sans-serif;
+}
+
+.table-wrap {
+	overflow-x: auto;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+}
+.movies {
+	width: 100%;
+	border-collapse: collapse;
+	font-family: system-ui, sans-serif;
+	font-size: 14px;
+}
+.movies th,
+.movies td {
+	text-align: left;
+	padding: 12px 14px;
+	border-bottom: 1px solid var(--line);
+	vertical-align: top;
+}
+.movies th {
+	color: var(--muted);
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+.movies tr:last-child td {
+	border-bottom: 0;
+}
+.actions {
+	white-space: nowrap;
+}
+.actions button + button {
+	margin-left: 12px;
+}
